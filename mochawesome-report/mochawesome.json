@@ -1,0 +1,217 @@
+{
+  "stats": {
+    "suites": 4,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-08-02T07:04:35.575Z",
+    "end": "2025-08-02T07:04:36.994Z",
+    "duration": 1419,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "6d63829b-b1ae-474e-a255-c68afa2b2d1b",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "80e1562a-7cad-4352-a986-ee03d727d7a3",
+          "title": "Create New User",
+          "fullFile": "/Users/pardede/Desktop/Sesi7_Yoel Pardede/request_API/createUser/createUser.js",
+          "file": "/request_API/createUser/createUser.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should return user data with status 201",
+              "fullTitle": "Create New User should return user data with status 201",
+              "timedOut": false,
+              "duration": 836,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await fetch(\"https://reqres.in/api/users\", {\n  method: 'POST',\n  headers: {\n    'x-api-key': 'reqres-free-v1',\n    'Content-Type': 'application/json',\n  },\n  body: JSON.stringify({\n    name : \"Yoel\",\n    job : \"Developer\",\n  })\n});\nconst responseData = await response.json();\nexpect(response.status).to.equal(201); //verif status code dari response status 201\nexpect(responseData.name).to.equal(\"Yoel\"); // mengecek apakah nama sesuai input\nexpect(responseData.job).to.equal(\"Developer\");\n\n\n// Untuk menampilkan response JSON nya ke console jadi bisa pakai generator dari JSON ke JSON schema pakai web ini:\n// https://transform.tools/json-to-json-schema\n// console.log(\"Check Response JSON\");\n//console.log(responseData);\n\n  const schema = {\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"title\": \"Generated schema for Root\",\n  \"type\": \"object\",\n  \"properties\": {\n\"name\": {\n  \"type\": \"string\"\n},\n\"job\": {\n  \"type\": \"string\"\n},\n\"id\": {\n  \"type\": \"string\"\n},\n\"createdAt\": {\n  \"type\": \"string\"\n}\n  },\n  \"required\": [\n\"name\",\n\"job\",\n\"id\",\n\"createdAt\"\n  ]  \n}  \n// //Validasi JSON  dengan AJV\nconst ajv = new Ajv({ allErrors: true});\nconst validate = ajv.compile(schema);\n//ini valid\nconst isValid = validate(responseData);; \n\n// //ini tidak valid\nconst errorMessage = JSON.stringify(validate.errors, null, 2);\nexpect(isValid, errorMessage).to.be.true; //cetak error jika tidak valid",
+              "err": {},
+              "uuid": "91389167-d4c9-4c73-b26c-51d7e3bc429e",
+              "parentUUID": "80e1562a-7cad-4352-a986-ee03d727d7a3",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "91389167-d4c9-4c73-b26c-51d7e3bc429e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 836,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "09ac9c86-e2f8-4a30-b574-5d244bf01f9c",
+          "title": "Delete User",
+          "fullFile": "/Users/pardede/Desktop/Sesi7_Yoel Pardede/request_API/deleteUser/deleteUser.js",
+          "file": "/request_API/deleteUser/deleteUser.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should return with status 204 when user is deleted",
+              "fullTitle": "Delete User should return with status 204 when user is deleted",
+              "timedOut": false,
+              "duration": 253,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await fetch(\"https://reqres.in/api/users/2\", {\n  method: 'DELETE',\n  headers: {\n    'x-api-key': 'reqres-free-v1',\n    'Content-Type': 'application/json',\n  },\n});\nexpect(response.status).to.equal(204); //verif status code dari response status 201",
+              "err": {},
+              "uuid": "960da1b6-5e60-40c2-ab59-04c1bbda466b",
+              "parentUUID": "09ac9c86-e2f8-4a30-b574-5d244bf01f9c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "960da1b6-5e60-40c2-ab59-04c1bbda466b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 253,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "a7430814-545a-4de2-a988-9eac03624d0d",
+          "title": "Get List User",
+          "fullFile": "/Users/pardede/Desktop/Sesi7_Yoel Pardede/request_API/getUser/getUser.js",
+          "file": "/request_API/getUser/getUser.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should return user data with status 200",
+              "fullTitle": "Get List User should return user data with status 200",
+              "timedOut": false,
+              "duration": 77,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await fetch(\"https://reqres.in/api/users?page=2\", {\n  method: 'GET',\n  headers: {\n    'x-api-key': 'reqres-free-v1',\n    'Content-Type': 'application/json',\n  }\n});\nconst responseData = await response.json();\nexpect(response.status).to.equal(200); //verif status code dari response status 200\nexpect(responseData.data[0].first_name).to.be.a('string'); // mengecek apakah nilah dr first_name itu tipe string atau bukan\n\n\n// Untuk menampilkan response JSON nya ke console jadi bisa pakai generator dari JSON ke JSON schema pakai web ini:\n// https://transform.tools/json-to-json-schema\n// console.log(\"Check Response JSON\");\n// console.log(responseData);\nconst schema = {\n  type: \"object\",\n  required: [\"page\", \"per_page\", \"total\", \"total_pages\", \"data\"],\n  properties: {\n    page: { type: \"number\" },\n    per_page: { type: \"number\" },\n    total: { type: \"number\" },\n    total_pages: { type: \"number\" },\n    data: {\n      type: \"array\",\n      items: {\n        type: \"object\",\n        required: [\"id\", \"email\", \"first_name\", \"last_name\", \"avatar\"],\n        properties: {\n          id: { type: \"number\" },\n          email: { type: \"string\" },\n          first_name: { type: \"string\" },\n          last_name: { type: \"string\" },\n          avatar: { type: \"string\" }\n        }\n      }\n    }\n  }\n};\n//Validasi JSON  dengan AJV\nconst ajv = new Ajv({ allErrors: true});\nconst validate = ajv.compile(schema);\n//ini valid\nconst isValid = validate(responseData);; \n\n//ini tidak valid\nconst errorMessage = JSON.stringify(validate.errors, null, 2);\nexpect(isValid, errorMessage).to.be.true; //cetak error jika tidak valid",
+              "err": {},
+              "uuid": "f7e4ee80-bd8b-4160-a577-e6e08bbf84b3",
+              "parentUUID": "a7430814-545a-4de2-a988-9eac03624d0d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "f7e4ee80-bd8b-4160-a577-e6e08bbf84b3"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 77,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "291c3b40-eb3f-442c-b347-263b994dd4b5",
+          "title": "Update User (PATCH)",
+          "fullFile": "/Users/pardede/Desktop/Sesi7_Yoel Pardede/request_API/updateUser/updateUser.js",
+          "file": "/request_API/updateUser/updateUser.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should return user data with status 201",
+              "fullTitle": "Update User (PATCH) should return user data with status 201",
+              "timedOut": false,
+              "duration": 242,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await fetch(\"https://reqres.in/api/users/2\", {\n  method: 'PATCH',\n  headers: {\n    'x-api-key': 'reqres-free-v1',\n    'Content-Type': 'application/json',\n  },\n  body: JSON.stringify({\n    job : \"QA Engineer\",\n  })\n});\nconst responseData = await response.json();\nexpect(response.status).to.equal(200); //verif status code dari response status 201\nexpect(responseData.job).to.equal(\"QA Engineer\"); //check apakah job sudah sesuai\n// Untuk menampilkan response JSON nya ke console jadi bisa pakai generator dari JSON ke JSON schema pakai web ini:\n    // https://transform.tools/json-to-json-schema\n    // console.log(\"Check Response JSON\");\n    //  console.log(responseData);\n\n  const schema = {\n   \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"title\": \"Generated schema for Root\",\n  \"type\": \"object\",\n  \"properties\": {\n\"job\": {\n  \"type\": \"string\"\n},\n\"updatedAt\": {\n  \"type\": \"string\"\n}\n  },\n  \"required\": [\n\"job\",\n\"updatedAt\"\n  ]\n}  \n\n  //   // //Validasi JSON  dengan AJV\n    const ajv = new Ajv({ allErrors: true});\n    const validate = ajv.compile(schema);\n    //ini valid\n    const isValid = validate(responseData);; \n    \n    // //ini tidak valid\n    const errorMessage = JSON.stringify(validate.errors, null, 2);\n    expect(isValid, errorMessage).to.be.true; //cetak error jika tidak valid",
+              "err": {},
+              "uuid": "b4fd6256-2565-4f7d-8771-ec896a19d87b",
+              "parentUUID": "291c3b40-eb3f-442c-b347-263b994dd4b5",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b4fd6256-2565-4f7d-8771-ec896a19d87b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 242,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.7.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}

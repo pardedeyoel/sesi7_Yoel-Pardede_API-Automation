@@ -1,0 +1,22 @@
+{
+  "name": "sesi7_yoel-pardede",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+   "test": "mocha request_API/**/*.js --reporter mochawesome",
+    "test:allScript": "mocha ./request_API/**/*.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "chai": "^5.2.1",
+    "mocha": "^11.7.1",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "mochawesome": "^7.1.3"
+  }
+}
