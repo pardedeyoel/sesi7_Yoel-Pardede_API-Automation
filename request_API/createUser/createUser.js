@@ -54,13 +54,13 @@ describe("Create New User", function () {
       ]  
     }  
 
-    // //Validasi JSON  dengan AJV
+    //Validasi JSON  dengan AJV
     const ajv = new Ajv({ allErrors: true});
     const validate = ajv.compile(schema);
     //ini valid
     const isValid = validate(responseData);; 
     
-    // //ini tidak valid
+    //ini tidak valid
     const errorMessage = JSON.stringify(validate.errors, null, 2);
     expect(isValid, errorMessage).to.be.true; //cetak error jika tidak valid
 

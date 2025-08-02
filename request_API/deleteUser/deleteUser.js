@@ -1,6 +1,6 @@
 const assert = require("assert");
 const { expect } = require("chai");
-const ajv = require("ajv");
+const Ajv = require("ajv");
 
 describe("Delete User", function () {
   it('should return with status 204 when user is deleted', async function () {
